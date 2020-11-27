@@ -14,9 +14,10 @@
 // console.log(person);
 const AddmovieBtn=document.querySelector('#add-movie-btn');
 const SearchBtn=document.querySelector('#search-btn');
+const Searchbtn=document.querySelector('.search-btn');
 const movies=[];
 
-const RenderMovies=()=>{
+const RenderMovies=(filter ='')=>{
     const movielist=document.getElementById('movie-list');
     if(movies.length===0){
         movielist.classList.remove('visible');
@@ -26,10 +27,20 @@ const RenderMovies=()=>{
         movielist.classList.add('visible');
     }
     movielist.innerHTML='';
-movies.forEach((movie)=>{
+
+    const filteredMovies=!filter?movies
+    :movies.filter(movie=>movie.info.title.includes(filter));
+filteredMovies.forEach((movie)=>{
 const movieel=document.createElement('li');
-movieel.textContent=movie.info.title;
+let Text=movie.info.title+ ' - ';
+for(const key in movie.info){
+    if(key !== 'title'){
+        Text=Text+`${key}: ${movie.info[key]}`;
+    }
+}
+movieel.textContent=Text;
 movielist.append(movieel);
+
 });
 }
 const AddmovieHandler=()=>{
@@ -52,4 +63,11 @@ const AddmovieHandler=()=>{
                // console.log(newmovie);
                 
 };
+
+const SearchMovie=()=>{
+    const FilterTem=document.querySelector('#filter-title').value;
+    RenderMovies(FilterTem);
+}
+
 AddmovieBtn.addEventListener('click',AddmovieHandler);
+SearchBtn.addEventListener('click',SearchMovie);
