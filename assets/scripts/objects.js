@@ -72,8 +72,3 @@ const SearchMovie=()=>{
 AddmovieBtn.addEventListener('click',AddmovieHandler);
 SearchBtn.addEventListener('click',SearchMovie);
 
-
-
-alert('mohamed Ben moussa');
-alert('I am 24 years old');
-
