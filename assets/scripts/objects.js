@@ -71,3 +71,7 @@ const SearchMovie=()=>{
 
 AddmovieBtn.addEventListener('click',AddmovieHandler);
 SearchBtn.addEventListener('click',SearchMovie);
+
+
+
+alert('mohamed Ben moussa');
